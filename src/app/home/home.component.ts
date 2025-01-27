@@ -94,11 +94,12 @@ export class HomeComponent implements OnInit{
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result as string; 
+        this.selectedBlog.images = reader.result as string;
       };
-      reader.readAsDataURL(file);
-      if (this.selectedBlog) {
-        this.selectedBlog.images = file; 
-      }
+       reader.readAsDataURL(file);
+      // if (this.selectedBlog) {
+      //   this.selectedBlog.images = reader.result as string; 
+      // }
     }
   }
 }
