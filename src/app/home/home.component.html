@@ -1,0 +1,41 @@
+<div *ngIf="!isEditing" class="container" >
+   <div class="row">
+       <div class="col-sm-4 "  *ngFor="let blog of blogs">
+         <div class="card">
+          <img class="card-img-top" src="{{blog.images}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{blog.blogTitle}}</h5>
+             <span class="card-text">{{(blog.content.lenght>firstCount)?(blog.content | slice:0:counter)+'...':(blog.content)}}
+             <span class="redTxt" *ngIf="(blog.content.lenght>100)" (click)="toggleSkil($event)">{{showTxt}}</span>
+             </span> 
+             <div class="button-container">
+              <button class="btn btn-primary" (click)="editBlog(blog)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteBlog(blog.id)">Delete</button>
+            </div>
+          </div>
+         </div>
+       
+       </div>
+   </div>
+</div>
+
+<div *ngIf="selectedBlog" class="edit-blog-form">
+  <h2>Edit Blog</h2>
+  <form (ngSubmit)="updateBlog()">
+    <div class="form-group">
+      <label for="blogTitle">Blog Title</label>
+      <input type="text" class="form-control" id="blogTitle" [(ngModel)]="selectedBlog.blogTitle" name="blogTitle" required>
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea class="form-control" id="content" [(ngModel)]="selectedBlog.content" name="content" rows="5" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="file" class="form-control" (change)="onImageSelected($event)" name="image">
+      <img *ngIf="imagePreview" [src]="imagePreview" alt="Image Preview" class="img-thumbnail mt-2" width="200" />
+    </div>
+    <button type="submit" class="btn btn-success">Update Blog</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>

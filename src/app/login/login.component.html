@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-lg-6 col-xl-5 col-md-9 mx-auto">
+        <div class="card mt-4">
+            <div class="card-header bg-secondry text-dark">
+                    <h3>Login</h3>
+            </div>
+            <form [formGroup]="form">
+                <div class="card-body">
+                    <div class="form-group form-row">
+                        <label for="UserName" class="col-md-4 col-form-label">
+                                User Name
+                        </label>
+                        <div class="col-md-8">
+                                <input type="text" formControlName="username"  class="form-control" placeholder="UserName" name="UserName" autofocus="autofocus"/>
+                        </div>
+                        <small  class="text-center" style="color: red; margin:auto;"  *ngIf="registerFormControl.username && registerFormControl.username.invalid && registerFormControl.username.touched">UserName Is Required</small>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="Password" class="col-md-4 col-form-label">
+                                Password
+                        </label>
+                        <div class="col-md-8">
+                                <input type="password" formControlName="password" class="form-control"  placeholder="Password" name="Password" autofocus="autofocus"
+                                />
+                        </div>
+                    </div>
+                        <div class="card-footer text-rigt">
+                            <!-- <p class="text-danger">{{errorMessage}}</p> -->
+                            <button  class="btn btn-primary" [disabled]="form.invalid" (click)="loginClick()" >Login</button>
+                        </div>
+                </div>
+            </form>
+           
+        </div>
+    </div>
+</div>
+

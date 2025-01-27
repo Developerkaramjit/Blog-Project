@@ -1,0 +1,25 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+      <h4 class="card-header">Create blog</h4>
+      <div class="card-body">
+        <form [formGroup]="createBlogForm" (ngSubmit)="submit()">
+         <div class="form-group">
+           <label for="title">Title</label>
+           <input type="text" formControlName="blogTitle" class="form-control"
+                [ngClass]="{'is-invalid': submitted && f.title.errors}" />
+             <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+            <div *ngIf="f.title.errors.required">Title is required</div> 
+          </div>
+          </div>
+          <div class="form-group">
+          <label for="content">Content</label><br>
+          <textarea formControlName="content" placeholder="Enter Text Here..."></textarea>
+          </div>
+          <div class="form-group">
+            <input id="file" type="file" class="form-control" (change)="onFileChange($event)">
+          </div>
+         <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,31 @@
+.card-body {
+    position: relative;
+    padding-bottom: 60px; /* Adds space for buttons */
+  }
+  
+  .card-body .button-container {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card-body .button-container button {
+    margin-top: 10px; /* Ensures space between content and buttons */
+  }
+  
+  .card-text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-height: 70px; /* Restricts the height for better button positioning */
+  }
+  
+  .redTxt {
+    color: red;
+    cursor: pointer;
+  }
+  
